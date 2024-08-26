@@ -1,5 +1,3 @@
-
-//sample code
 import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { TouchableOpacity, StyleSheet, Text, View, ImageBackground, TextInput } from 'react-native';
@@ -11,7 +9,7 @@ export default function OTP_Page() {
   const handlePress = () => {
     setTextColor(prevColor => (prevColor === 'black' ? 'white' : 'black'));
   };
-
+//The content to show in the screen
   return (
     <View style={styles.container}>
       <ImageBackground source={backgroundImage} style={styles.background}>
@@ -25,11 +23,11 @@ export default function OTP_Page() {
     </View>
   );
 }
-
+//Adding styles to the page =>
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 50,
+    padding:0,
     backgroundColor: '#f9f9f9',
     alignItems: 'center',
     height: '100%',
