@@ -4,6 +4,8 @@ import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { TouchableOpacity, StyleSheet, Text, View, ImageBackground, TextInput } from 'react-native';
 import backgroundImage from './assets/ba.jpg';
+import OTP_Page from './OTP_Page';
+
 
 export default function App() {
   const [textColor, setTextColor] = useState('black'); // Initial color
@@ -16,6 +18,8 @@ export default function App() {
     <View style={styles.container}>
       <ImageBackground source={backgroundImage} style={styles.background}>
         <Text style={styles.title}>OTP Verification</Text>
+        <Text>OTP as been sent to your registered mobile number
+        </Text>
         <TextInput style={styles.input} placeholder='Enter OTP' />
         <TouchableOpacity onPress={handlePress}>
           <Text style={[styles.submitText, { color: textColor }]}>Submit</Text>

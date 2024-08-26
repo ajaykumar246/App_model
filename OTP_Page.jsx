@@ -5,7 +5,7 @@ import { StatusBar } from 'expo-status-bar';
 import { TouchableOpacity, StyleSheet, Text, View, ImageBackground, TextInput } from 'react-native';
 import backgroundImage from './assets/ba.jpg';
 
-export default function App() {
+export default function OTP_Page() {
   const [textColor, setTextColor] = useState('black'); // Initial color
 
   const handlePress = () => {
