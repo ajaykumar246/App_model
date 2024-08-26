@@ -3,7 +3,6 @@ import { StatusBar } from 'expo-status-bar';
 import { TouchableOpacity, StyleSheet, Text, View, ImageBackground, TextInput, Alert } from 'react-native';
 import backgroundImage from './assets/ba.jpg';
 export default function App() {
-  const [textColor, setTextColor] = useState('black'); // Initial color
   const [username, setUsername] = useState('');
   const [selectGender, setSelectGender] = useState(null);
   const [phonenumber, setPhonenumber] = useState('');
@@ -13,14 +12,6 @@ export default function App() {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
-  const handlePress = () => {
-    setTextColor(prevColor => (prevColor === 'black' ? 'white' : 'black'));
-  };
-
-  const handleSelectGender = (gender) => {
-    setSelectGender(gender);
-  };
-
   const handleRegister = () => {
     if (password !== confirmPassword) {
       Alert.alert('Error', 'Passwords do not match!');
@@ -28,6 +19,13 @@ export default function App() {
     }
     Alert.alert('Success', `Welcome, ${username}!`);
   };
+
+  const renderRadioButton = (gender, label) => (
+    <TouchableOpacity onPress={() => setSelectGender(gender)} style={styles.radioContainer}>
+      <View style={[styles.radioButton, selectGender === gender && styles.radioButtonSelected]} />
+      <Text style={styles.radioLabel}>{label}</Text>
+    </TouchableOpacity>
+  );
 
   return (
     <View style={styles.container}>
@@ -39,24 +37,14 @@ export default function App() {
           value={username}
           onChangeText={setUsername}
         />
-        <TouchableOpacity
-          style={[styles.option, selectGender === 'male' && styles.selected]}
-          onPress={() => handleSelectGender('male')}
-        >
-          <Text style={styles.optionText}>Male</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={[styles.option, selectGender === 'female' && styles.selected]}
-          onPress={() => handleSelectGender('female')}
-        >
-          <Text style={styles.optionText}>Female</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={[styles.option, selectGender === 'other' && styles.selected]}
-          onPress={() => handleSelectGender('other')}
-        >
-          <Text style={styles.optionText}>Other</Text>
-        </TouchableOpacity>
+        
+        {/* Wrap the radio buttons in a horizontal container */}
+        <View style={styles.radioGroup}>
+          {renderRadioButton('male', 'Male')}
+          {renderRadioButton('female', 'Female')}
+          {renderRadioButton('other', 'Other')}
+        </View>
+
         <TextInput
           style={styles.input}
           placeholder="Phone No."
@@ -99,19 +87,19 @@ export default function App() {
           onChangeText={setConfirmPassword}
         />
         <TouchableOpacity style={styles.button} onPress={handleRegister}>
-          <Text style={[styles.buttonText, { color: textColor }]}>Next</Text>
+          <Text style={[styles.buttonText, { color: 'black' }]}>Next</Text>
         </TouchableOpacity>
       </ImageBackground>
       <StatusBar style="auto" />
     </View>
   );
 }
-//Adding styles to the page =>
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 0,
-    backgroundColor: '#f9f9f9',
+    backgroundColor: 'white',
     alignItems: 'center',
     height: '100%',
     width: '100%',
@@ -127,10 +115,10 @@ const styles = StyleSheet.create({
     height: 40,
     width: 300,
     borderColor: 'gray',
-    borderWidth: 1, // Corrected property name
+    borderWidth: 1,
     paddingLeft: 10,
     marginBottom: 20,
-    marginTop: '8%',
+    marginTop: '1%',
     backgroundColor: 'lightgray',
     borderRadius: 10,
   },
@@ -139,32 +127,41 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
   },
-  option: {
-    padding: 15,
-    marginVertical: 5,
-    backgroundColor: 'lightgrey',
-    width: '80%',
+  radioGroup: {
+    flexDirection: 'row',  // Aligns radio buttons horizontally
+    justifyContent: 'space-between',
+    marginVertical: 10,
+  },
+  radioContainer: {
+    flexDirection: 'row',
     alignItems: 'center',
+    marginRight: 15,
   },
-  selected: {
-    backgroundColor: '#6200ee',
-
+  radioButton: {
+    height: 20,
+    width: 20,
+    borderRadius: 10,
+    borderWidth: 2,
+    borderColor: 'black',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginRight: 5,
   },
-  optionText: {
+  radioButtonSelected: {
+    backgroundColor: 'black',
+  },
+  radioLabel: {
     fontSize: 16,
-    color: '#000',
-  },
-  selectedText: {
-    color: '#fff',
+    color: 'black',
   },
   button: {
     backgroundColor: 'lightgray',
     padding: 15,
     borderRadius: 5,
-    alignItems: 'end',
+    alignItems: 'center',
   },
   buttonText: {
-    color: '#fff',
+    color: '#000',
     fontWeight: 'bold',
     fontSize: 16,
   },
