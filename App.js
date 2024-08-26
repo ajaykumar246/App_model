@@ -127,22 +127,11 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
   },
-  radioGroup: {
-    flexDirection: 'row',  // Aligns radio buttons horizontally
-    justifyContent: 'space-between',
-    marginVertical: 10,
-  },
-  radioContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginRight: 15,
-  },
-  radioButton: {
-    height: 20,
-    width: 20,
-    borderRadius: 10,
-    borderWidth: 2,
-    borderColor: 'black',
+  option: {
+    padding: 15,
+    marginVertical: 5,
+    backgroundColor: 'lightgrey',
+    width: '80%',
     alignItems: 'center',
     justifyContent: 'center',
     marginRight: 5,
