@@ -4,47 +4,105 @@ import { TouchableOpacity, StyleSheet, Text, View, ImageBackground, TextInput, A
 import backgroundImage from './assets/ba.jpg';
 export default function App() {
   const [textColor, setTextColor] = useState('black'); // Initial color
-  const[username, setUsername] = useState('');
-  const[selectgender, setSelectGender] = useState(null);
-  const[phonenumber, setPhonenumber] = useState('');
-  const[address, setAddress] = useState('');
-  const[district, setDistrict] = useState('');
+  const [username, setUsername] = useState('');
+  const [selectGender, setSelectGender] = useState(null);
+  const [phonenumber, setPhonenumber] = useState('');
+  const [address, setAddress] = useState('');
+  const [district, setDistrict] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+
   const handlePress = () => {
     setTextColor(prevColor => (prevColor === 'black' ? 'white' : 'black'));
   };
+
   const handleSelectGender = (gender) => {
     setSelectGender(gender);
   };
+
   const handleRegister = () => {
-    if (password !== confirmPassword){
-      Alert.alert('Error', 'Password do not match!');
+    if (password !== confirmPassword) {
+      Alert.alert('Error', 'Passwords do not match!');
       return;
     }
-    Alert.alert('Success',`Welcome, ${username}!`)
+    Alert.alert('Success', `Welcome, ${username}!`);
   };
-//The content of the 
+
   return (
     <View style={styles.container}>
       <ImageBackground source={backgroundImage} style={styles.background}>
         <Text style={styles.title}>Register</Text>
-        <TextInput style={styles.input} placeholder='Username' value={username} onChangeText={setUsername} />
-        <TouchableOpacity style={[styles.option, selectgender == 'male' && styles.selected]} onPress={() => handleSelectGender('male')}> <Text style={styles.optionText}>Male</Text></TouchableOpacity>
-        <TouchableOpacity style={[styles.option, selectgender == 'female' && styles.selected]} onPress={() => handleSelectGender('female')}> <Text style={styles.optionText}>Female</Text></TouchableOpacity>
-        <TouchableOpacity style={[styles.option, selectgender == 'other' && styles.selected]} onPress={() => handleSelectGender('other')}> <Text style={styles.optionText}>Other</Text></TouchableOpacity>
-        <TextInput style={styles.input} placeholder='Phone No.' keyboardType='phone-pad' value={phonenumber} onChangeText={setPhonenumber} />
-        <TextInput style={styles.input} placeholder='Address' keyboardType='default' value={address} onChangeText={setAddress} />
-        <TextInput style={styles.input} placeholder='District' keyboardType='default' autoCapitalize='words' value={district} onChangeText={setDistrict} />
-        <TextInput style={styles.input} placeholder='Email' keyboardType='email-address' value={email} onChangeText={setEmail} />
-        <TextInput style={styles.input} placeholder='Password' secureTextEntry value={password} onChangeText={setPassword} />
-        <TextInput style={styles.input} placeholder='Confirm Password' secureTextEntry value={confirmPassword} onChangeText={setConfirmPassword} />
+        <TextInput
+          style={styles.input}
+          placeholder="Username"
+          value={username}
+          onChangeText={setUsername}
+        />
+        <TouchableOpacity
+          style={[styles.option, selectGender === 'male' && styles.selected]}
+          onPress={() => handleSelectGender('male')}
+        >
+          <Text style={styles.optionText}>Male</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={[styles.option, selectGender === 'female' && styles.selected]}
+          onPress={() => handleSelectGender('female')}
+        >
+          <Text style={styles.optionText}>Female</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={[styles.option, selectGender === 'other' && styles.selected]}
+          onPress={() => handleSelectGender('other')}
+        >
+          <Text style={styles.optionText}>Other</Text>
+        </TouchableOpacity>
+        <TextInput
+          style={styles.input}
+          placeholder="Phone No."
+          keyboardType="phone-pad"
+          value={phonenumber}
+          onChangeText={setPhonenumber}
+        />
+        <TextInput
+          style={styles.input}
+          placeholder="Address"
+          value={address}
+          onChangeText={setAddress}
+        />
+        <TextInput
+          style={styles.input}
+          placeholder="District"
+          autoCapitalize="words"
+          value={district}
+          onChangeText={setDistrict}
+        />
+        <TextInput
+          style={styles.input}
+          placeholder="Email"
+          keyboardType="email-address"
+          value={email}
+          onChangeText={setEmail}
+        />
+        <TextInput
+          style={styles.input}
+          placeholder="Password"
+          secureTextEntry
+          value={password}
+          onChangeText={setPassword}
+        />
+        <TextInput
+          style={styles.input}
+          placeholder="Confirm Password"
+          secureTextEntry
+          value={confirmPassword}
+          onChangeText={setConfirmPassword}
+        />
         <TouchableOpacity style={styles.button} onPress={handleRegister}>
-        <Text style={[styles.buttonText, { color: textColor }]}>Next</Text>
+          <Text style={[styles.buttonText, { color: textColor }]}>Next</Text>
         </TouchableOpacity>
       </ImageBackground>
-      <StatusBar style='auto' /> 
+      <StatusBar style="auto" />
     </View>
   );
 }
