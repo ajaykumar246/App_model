@@ -4,7 +4,7 @@ import  backgroundImage from './image/ba.jpg';
 import { reloadAppAsync } from 'expo';
 import React, {useState} from 'react';
 
-export default function App() {
+export default function login_page() {
   return (
     <View style={styles.container}>
       <ImageBackground source={backgroundImage} style={styles.background}>
