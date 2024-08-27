@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { TouchableOpacity, StyleSheet, Text, View, ImageBackground, TextInput, Alert, Platform, KeyboardAvoidingView, Switch } from 'react-native';
+import { TouchableOpacity, StyleSheet, Text, View, ImageBackground, TextInput, Alert, Platform, KeyboardAvoidingView } from 'react-native';
+import { Ionicons } from '@expo/vector-icons'; // Import Ionicons for the eye icon
 import backgroundImage from './assets/ba.jpg';
 
 export default function App() {
@@ -32,27 +33,28 @@ export default function App() {
   return (
     <KeyboardAvoidingView
       style={styles.container}
-      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+  keyboardVerticalOffset={Platform.OS === 'ios' ? 40 : 0}>
       <ImageBackground source={backgroundImage} style={styles.background}>
         {/* White overlay */}
         <View style={styles.overlay}>
           <Text style={styles.title}>Register</Text>
-          <Text style={styles.info}>Enter your name</Text>
+          <Text style={styles.info}>Enter your Name:</Text>
           <TextInput
             style={styles.input}
-            placeholder="Username"
+            placeholder="Name"
             value={username}
             onChangeText={setUsername}
           />
 
           {/* Wrap the radio buttons in a horizontal container */}
-          <Text style={styles.info}>Gender</Text>
+          <Text style={styles.info}>Gender:</Text>
           <View style={styles.radioGroup}>
             {renderRadioButton('male', 'Male')}
             {renderRadioButton('female', 'Female')}
             {renderRadioButton('other', 'Other')}
           </View>
-          <Text style={styles.info}>Phone no.</Text>
+          <Text style={styles.info}>Phone No:</Text>
           <TextInput
             style={styles.input}
             placeholder="Phone No."
@@ -61,7 +63,7 @@ export default function App() {
             onChangeText={setPhonenumber}
           />
 
-          <Text style={styles.info}>District</Text>
+          <Text style={styles.info}>District:</Text>
           <TextInput
             style={styles.input}
             placeholder="District"
@@ -69,7 +71,7 @@ export default function App() {
             value={district}
             onChangeText={setDistrict}
           />
-          <Text style={styles.info}>Email</Text>
+          <Text style={styles.info}>Email:</Text>
           <TextInput
             style={styles.input}
             placeholder="Email"
@@ -78,36 +80,32 @@ export default function App() {
             onChangeText={setEmail}
           />
 
-          <Text style={styles.info}>Password</Text>
-          <TextInput
-            style={styles.input}
-            placeholder="Password"
-            secureTextEntry={!showPassword} // Toggle visibility
-            value={password}
-            onChangeText={setPassword}
-          />
-          <View style={styles.switchContainer}>
-            <Switch
-              value={showPassword}
-              onValueChange={(value) => setShowPassword(value)}
+          <Text style={styles.info}>Password:</Text>
+          <View style={styles.passwordContainer}>
+            <TextInput
+              style={styles.passwordInput}
+              placeholder="Password"
+              secureTextEntry={!showPassword} // Toggle visibility
+              value={password}
+              onChangeText={setPassword}
             />
-            <Text style={styles.switchLabel}>Show Password</Text>
+            <TouchableOpacity onPress={() => setShowPassword(!showPassword)}>
+              <Ionicons name={showPassword ? 'eye' : 'eye-off'} size={24} color="gray" />
+            </TouchableOpacity>
           </View>
 
-          <Text style={styles.info}>Confirm Password</Text>
-          <TextInput
-            style={styles.input}
-            placeholder="Confirm Password"
-            secureTextEntry={!showConfirmPassword} // Toggle visibility
-            value={confirmPassword}
-            onChangeText={setConfirmPassword}
-          />
-          <View style={styles.switchContainer}>
-            <Switch
-              value={showConfirmPassword}
-              onValueChange={(value) => setShowConfirmPassword(value)}
+          <Text style={styles.info}>Confirm Password:</Text>
+          <View style={styles.passwordContainer}>
+            <TextInput
+              style={styles.passwordInput}
+              placeholder="Confirm Password"
+              secureTextEntry={!showConfirmPassword} // Toggle visibility
+              value={confirmPassword}
+              onChangeText={setConfirmPassword}
             />
-            <Text style={styles.switchLabel}>Show Confirm Password</Text>
+            <TouchableOpacity onPress={() => setShowConfirmPassword(!showConfirmPassword)}>
+              <Ionicons name={showConfirmPassword ? 'eye' : 'eye-off'} size={24} color="gray" />
+            </TouchableOpacity>
           </View>
 
           <TouchableOpacity style={styles.button} onPress={handleRegister}>
@@ -137,7 +135,7 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     bottom: 0,
-    backgroundColor: 'rgba(200, 200, 200, 0.4)',
+    backgroundColor: 'rgba(0, 31, 63, 0.7)',
     paddingHorizontal: 20,
     justifyContent: 'center',
     alignItems: 'center',
@@ -148,21 +146,24 @@ const styles = StyleSheet.create({
     paddingLeft: 20,
     marginBottom: 5,
     fontSize: 16,
-    color: 'black',
+    color: 'white',
+    fontWeight: 'bold',
   },
   input: {
     height: 30,
     textAlign: 'left',
     width: '80%',
     borderBottomWidth: 1, // Only bottom border
-    borderBottomColor: 'gray', // Color of the line
+    borderBottomColor: 'white', // Color of the line
     fontSize: 18, // Adjust the font size as needed
     marginBottom: 15,
+    
   },
   title: {
     fontSize: 24,
     fontWeight: 'bold',
     textAlign: 'center',
+    color: 'white',
   },
   radioGroup: {
     flexDirection: 'row', // Horizontal layout
@@ -186,25 +187,31 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   radioButtonSelected: {
-    backgroundColor: '#2c6a6a',
+    backgroundColor: 'chocolate',
   },
   radioLabel: {
     fontSize: 16,
-    color: '#333',
+    color: 'white',
+    fontWeight: 'bold',
   },
-  switchContainer: {
+  passwordContainer: {
     flexDirection: 'row',
     alignItems: 'center',
+    borderBottomWidth: 1,
+    borderBottomColor: 'white',
     marginBottom: 15,
+    width: '80%',
   },
-  switchLabel: {
-    marginLeft: 10,
-    fontSize: 16,
+  passwordInput: {
+    flex: 1,
+    fontSize: 18,
+    paddingVertical: 5,
   },
   button: {
     backgroundColor: 'lightgray',
     padding: 10,
     borderRadius: 10,
+    width: '30%',
     alignItems: 'center',
   },
   buttonText: {
