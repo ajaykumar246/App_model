@@ -8,7 +8,6 @@ export default function App() {
   const [username, setUsername] = useState('');
   const [selectGender, setSelectGender] = useState(null);
   const [phonenumber, setPhonenumber] = useState('');
-  const [district, setDistrict] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -63,6 +62,7 @@ export default function App() {
             onChangeText={setPhonenumber}
           />
 
+<<<<<<< HEAD
           <Text style={styles.info}>District:</Text>
           <TextInput
             style={styles.input}
@@ -72,6 +72,10 @@ export default function App() {
             onChangeText={setDistrict}
           />
           <Text style={styles.info}>Email:</Text>
+=======
+
+          <Text style={styles.info}>Email</Text>
+>>>>>>> 1337e88ba71041f5c8172aa66a621f2f315b124a
           <TextInput
             style={styles.input}
             placeholder="Email"
