@@ -62,20 +62,8 @@ export default function App() {
             onChangeText={setPhonenumber}
           />
 
-<<<<<<< HEAD
-          <Text style={styles.info}>District:</Text>
-          <TextInput
-            style={styles.input}
-            placeholder="District"
-            autoCapitalize="words"
-            value={district}
-            onChangeText={setDistrict}
-          />
-          <Text style={styles.info}>Email:</Text>
-=======
 
           <Text style={styles.info}>Email</Text>
->>>>>>> 1337e88ba71041f5c8172aa66a621f2f315b124a
           <TextInput
             style={styles.input}
             placeholder="Email"
