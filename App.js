@@ -39,7 +39,7 @@ export default function App() {
           <Text style={styles.info}>Enter your name</Text>
           <TextInput
             style={styles.input}
-            placeholder="Username"
+            placeholder="Name"
             value={username}
             onChangeText={setUsername}
           />
