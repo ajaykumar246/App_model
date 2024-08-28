@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "454187210892",
+    "firebase_url": "https://farmerapp-eacb8-default-rtdb.firebaseio.com",
+    "project_id": "farmerapp-eacb8",
+    "storage_bucket": "farmerapp-eacb8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:454187210892:android:a0039d648fbbac27bb83a9",
+        "android_client_info": {
+          "package_name": "com.wa2goose.farmerapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCmh-KQ_zOTNry690PFNOUR6gbqiCYilLM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
