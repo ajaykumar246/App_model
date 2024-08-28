@@ -7,3 +7,24 @@
     backgroundColor: 'lightgray',
     borderRadius: 0,
     textDecorationLine: 'none',
+
+
+
+    import React from 'react';
+import { NavigationContainer } from 'react-navigation/native';
+import { createStackNavigator } from 'react-navigation/stack';
+import Register_page from './Register_page'; // Assuming this is the file name for the registration page
+import OTP_Page from './OTP_Page'; // Assuming this is the file name for the OTP page
+
+const Stack = createStackNavigator();
+
+export default function App() {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Registration">
+        <Stack.Screen name="Registration" component={Register_page} />
+        <Stack.Screen name="OTP" component={OTP_Page} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+}

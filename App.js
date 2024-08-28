@@ -4,7 +4,7 @@ import { TouchableOpacity, StyleSheet, Text, View, ImageBackground, TextInput, A
 import { Ionicons } from '@expo/vector-icons'; // Import Ionicons for the eye icon
 import backgroundImage from './assets/ba.jpg';
 
-export default function App() {
+export default function Registration({ navigation}) {
   const [username, setUsername] = useState('');
   const [selectGender, setSelectGender] = useState(null);
   const [phonenumber, setPhonenumber] = useState('');
@@ -19,7 +19,7 @@ export default function App() {
       Alert.alert('Error', 'Passwords do not match!');
       return;
     }
-    Alert.alert('Success', `Welcome, ${username}!`);
+    navigation.navigate('OTP');
   };
 
   const renderRadioButton = (gender, label) => (
